@@ -90,7 +90,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         //             |
         //             |
         //      _______|_____________     +Y axis
-        //     /       |_____________/|__________ 120.17
+        //     /       |_____________/|__________
         //    /   REV / EXPANSION   //
         //   /       / HUB         //
         //  /_______/_____________//
@@ -102,7 +102,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         // and the placement of the dot/orientation from https://docs.revrobotics.com/rev-control-system/control-system-overview/dimensions#imu-location
         //
         // For example, if +Y in this diagram faces downwards, you would use AxisDirection.NEG_Y.
-        //BNO055IMUUtil.remapZAxis(imu, AxisDirection.NEG_Y);
+
 
         leftFront = hardwareMap.get(DcMotorEx.class, "leftFrontMotor");
         leftRear = hardwareMap.get(DcMotorEx.class, "leftBackMotor");
@@ -133,6 +133,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         // TODO: if desired, use setLocalizer() to change the localization method
         // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));
         setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap));
+        //setLocalizer(new TwoWheelTrackingLocalizer(hardwareMap, this));
 
         trajectorySequenceRunner = new TrajectorySequenceRunner(follower, HEADING_PID);
     }

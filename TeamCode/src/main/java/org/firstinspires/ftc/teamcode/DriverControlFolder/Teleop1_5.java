@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Controller;
+import org.firstinspires.ftc.teamcode.Roadrunner.util.Encoder;
 
 @TeleOp(name = "Tele-op(1.5)", group = "Tele-Op")
 public class Teleop1_5 extends LinearOpMode {
@@ -12,6 +13,8 @@ public class Teleop1_5 extends LinearOpMode {
     private Controller controller;
     private FieldCenterAuto1_5 fieldCenterAuto;
     private ConeTransporter1_5 coneTransporter;
+    private TestingOdo testingOdo;
+    public static Encoder leftEncoder, rightEncoder, frontEncoder;
     // Check if B is pressed
     private boolean b_Press = false;
     private boolean stackState = false;
@@ -25,6 +28,7 @@ public class Teleop1_5 extends LinearOpMode {
             controller = new Controller(gamepad1, gamepad2);
             fieldCenterAuto = new FieldCenterAuto1_5(telemetry, hardwareMap);
             coneTransporter = new ConeTransporter1_5(telemetry, hardwareMap);
+            testingOdo = new TestingOdo(telemetry, hardwareMap);
 
 
         } catch (Exception exception) {
@@ -187,6 +191,7 @@ public class Teleop1_5 extends LinearOpMode {
                 telemetry.addData("Linear Slides Pos.", coneTransporter.linearSlides.getCurrentPosition());
                 telemetry.addData("Linear Slides Pos. Current var ", coneTransporter.LINEAR_SLIDES_CURRENT);
                 //telemetry.addData("stackLevel", coneTransporter.telemetryLevel.get(coneTransporter.telemetryListIndex));
+                testingOdo.EncoderTelemetry();
 
 
 

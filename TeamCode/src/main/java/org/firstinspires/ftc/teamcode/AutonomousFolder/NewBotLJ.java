@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.DriverControlFolder.ConeTransporter1_5;
 import org.firstinspires.ftc.teamcode.Roadrunner.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.Roadrunner.drive.StandardTrackingWheelLocalizer;
 import org.firstinspires.ftc.teamcode.Roadrunner.trajectorysequence.TrajectorySequence;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
@@ -52,6 +53,7 @@ public class NewBotLJ extends LinearOpMode {
     private SampleMecanumDrive drive;
     private ConeTransporter1_5 coneTransporter;
     private ElapsedTime timer;
+    private StandardTrackingWheelLocalizer standardTrackingWheelLocalizer;
 
     public boolean coneTransportedSetup = false;
     public double startX;
@@ -72,6 +74,7 @@ public class NewBotLJ extends LinearOpMode {
         drive = new SampleMecanumDrive(hardwareMap);
         coneTransporter = new ConeTransporter1_5(telemetry, hardwareMap);
         timer = new ElapsedTime();
+        standardTrackingWheelLocalizer = new StandardTrackingWheelLocalizer(hardwareMap);
 
         imu = this.hardwareMap.get(BNO055IMU.class, "imu");
         initializeIMU();
@@ -256,6 +259,7 @@ public class NewBotLJ extends LinearOpMode {
                         IMUHeading.imuAngle = readFromIMU();
                         telemetry.clear();
                         telemetry.addData("IMUHeading.imuAngle: ", IMUHeading.imuAngle);
+
                         telemetry.update();
                     })
                     .build();
