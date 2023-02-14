@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.AutonomousFolder;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -10,9 +11,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.DriverControlFolder.ConeTransporter1_5;
-import org.firstinspires.ftc.teamcode.Roadrunner.drive.SampleMecanumDrive;
-import org.firstinspires.ftc.teamcode.Roadrunner.drive.StandardTrackingWheelLocalizer;
-import org.firstinspires.ftc.teamcode.Roadrunner.trajectorysequence.TrajectorySequence;
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.StandardTrackingWheelLocalizer;
+import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -98,10 +99,12 @@ public class NewBotLJ extends LinearOpMode {
 
         telemetry.setMsTransmissionInterval(50);
 
-        /*
+        */
+/*
          * The INIT-loop:
          * This REPLACES waitForStart!
-         */
+         *//*
+
         while (!isStarted() && !isStopRequested()) {
             ArrayList<AprilTagDetection> currentDetections = detection.getLatestDetections();
 
@@ -158,12 +161,16 @@ public class NewBotLJ extends LinearOpMode {
 
         }
 
-        /*
+        */
+/*
          * The START command just came in: now work off the latest snapshot acquired
          * during the init loop.
-         */
+         *//*
 
-        /* Update the telemetry */
+
+        */
+/* Update the telemetry *//*
+
         if (tagOfInterest != null) {
             telemetry.addLine("Tag snapshot:\n");
             tagToTelemetry(tagOfInterest);
@@ -173,7 +180,9 @@ public class NewBotLJ extends LinearOpMode {
             telemetry.update();
         }
 
-        /* Start Loop */
+        */
+/* Start Loop *//*
+
 
         double numericalTag = 0;
         if (tagOfInterest != null) {
@@ -343,11 +352,13 @@ public class NewBotLJ extends LinearOpMode {
 
         }
 
-        /*while (opModeIsActive()) {
+        */
+/*while (opModeIsActive()) {
             IMUHeading.imuAngle = readFromIMU();
             telemetry.addData("IMUHeading.imuAngle: ", IMUHeading.imuAngle);
             telemetry.update();
-        }*/
+        }*//*
+
     }
 
     void tagToTelemetry(AprilTagDetection detection) {
@@ -376,4 +387,4 @@ public class NewBotLJ extends LinearOpMode {
     public double readFromIMU() {
         return -imu.getAngularOrientation().firstAngle;
     }
-}
+}*/

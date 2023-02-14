@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Controller;
-import org.firstinspires.ftc.teamcode.Roadrunner.util.Encoder;
+import org.firstinspires.ftc.teamcode.util.Encoder;
 
 @TeleOp(name = "Tele-op(1.5)", group = "Tele-Op")
 public class Teleop1_5 extends LinearOpMode {
@@ -14,7 +14,7 @@ public class Teleop1_5 extends LinearOpMode {
     private FieldCenterAuto1_5 fieldCenterAuto;
     private ConeTransporter1_5 coneTransporter;
     private TestingOdo testingOdo;
-    private TestingMotors testingMotors;
+    //private TestingMotors testingMotors;
     public static Encoder leftEncoder, rightEncoder, frontEncoder;
     // Check if B is pressed
     private boolean b_Press = false;
@@ -30,7 +30,7 @@ public class Teleop1_5 extends LinearOpMode {
             fieldCenterAuto = new FieldCenterAuto1_5(telemetry, hardwareMap);
             coneTransporter = new ConeTransporter1_5(telemetry, hardwareMap);
             testingOdo = new TestingOdo(telemetry, hardwareMap);
-            testingMotors = new TestingMotors(telemetry, hardwareMap);
+            //testingMotors = new TestingMotors(telemetry, hardwareMap);
 
         } catch (Exception exception) {
             telemetry.addLine("Outside of the while loop:");
@@ -191,7 +191,7 @@ public class Teleop1_5 extends LinearOpMode {
                 //telemetry.addData("stackLevel", coneTransporter.telemetryLevel.get(coneTransporter.telemetryListIndex));
                 testingOdo.EncoderTelemetry();
                 //testingMotors.resetEncoder();
-                testingMotors.EncoderTelemetry();
+                //testingMotors.EncoderTelemetry();
 
 
 

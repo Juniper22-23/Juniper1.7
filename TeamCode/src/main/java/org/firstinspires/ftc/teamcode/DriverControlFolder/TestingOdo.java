@@ -6,8 +6,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Mechanism;
-import org.firstinspires.ftc.teamcode.Roadrunner.drive.StandardTrackingWheelLocalizer;
-import org.firstinspires.ftc.teamcode.Roadrunner.util.Encoder;
+import org.firstinspires.ftc.teamcode.util.Encoder;
 
 public class TestingOdo extends Mechanism {
     public static Encoder leftEncoder, rightEncoder, frontEncoder;

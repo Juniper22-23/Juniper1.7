@@ -1,13 +1,13 @@
+/*
 package org.firstinspires.ftc.teamcode.DriverControlFolder;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Mechanism;
-import org.firstinspires.ftc.teamcode.Roadrunner.util.Encoder;
+import org.firstinspires.ftc.teamcode.util.Encoder;
 
 public class TestingMotors extends Mechanism {
     public Encoder leftBackEncoder, rightBackEncoder, leftFrontEncoder, rightFrontEncoder;
@@ -52,3 +52,4 @@ public class TestingMotors extends Mechanism {
 
     }
 }
+*/
