@@ -14,6 +14,7 @@ public class Teleop1_5 extends LinearOpMode {
     private FieldCenterAuto1_5 fieldCenterAuto;
     private ConeTransporter1_5 coneTransporter;
     private TestingOdo testingOdo;
+    private TestingMotors testingMotors;
     public static Encoder leftEncoder, rightEncoder, frontEncoder;
     // Check if B is pressed
     private boolean b_Press = false;
@@ -29,7 +30,7 @@ public class Teleop1_5 extends LinearOpMode {
             fieldCenterAuto = new FieldCenterAuto1_5(telemetry, hardwareMap);
             coneTransporter = new ConeTransporter1_5(telemetry, hardwareMap);
             testingOdo = new TestingOdo(telemetry, hardwareMap);
-
+            testingMotors = new TestingMotors(telemetry, hardwareMap);
 
         } catch (Exception exception) {
             telemetry.addLine("Outside of the while loop:");
@@ -83,6 +84,7 @@ public class Teleop1_5 extends LinearOpMode {
 
 
                 fieldCenterAuto.drive(gamepadX, gamepadY, gamepadRot, rotationToggle, strafeToggle);
+
 
                 //CONETRANSPORTER___________________________________________________________________________
                 if (controller.y) {
@@ -183,15 +185,13 @@ public class Teleop1_5 extends LinearOpMode {
                 telemetry.addData("rightFrontPower: ", fieldCenterAuto.rightFrontPower);
 
 
-                telemetry.addData("Linear slides speed", coneTransporter.linearSlidesSpeed);
-                telemetry.addData("strafeFactor", fieldCenterAuto.STRAFE_TOGGLE_FACTOR);
-                telemetry.addData("rotFactor", fieldCenterAuto.ROTATION_TOGGLE_FACTOR);
-                telemetry.addData(" ", " ");
-//                telemetry.addData("limit Switch", coneTransporter.limitSwitch.getState());
+
                 telemetry.addData("Linear Slides Pos.", coneTransporter.linearSlides.getCurrentPosition());
                 telemetry.addData("Linear Slides Pos. Current var ", coneTransporter.LINEAR_SLIDES_CURRENT);
                 //telemetry.addData("stackLevel", coneTransporter.telemetryLevel.get(coneTransporter.telemetryListIndex));
                 testingOdo.EncoderTelemetry();
+                //testingMotors.resetEncoder();
+                testingMotors.EncoderTelemetry();
 
 
 

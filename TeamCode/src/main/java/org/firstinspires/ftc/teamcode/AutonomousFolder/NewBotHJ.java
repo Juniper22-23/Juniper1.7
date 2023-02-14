@@ -20,7 +20,6 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 @Autonomous
-@Disabled
 public class NewBotHJ extends LinearOpMode {
 
     OpenCvCamera camera;
@@ -58,7 +57,7 @@ public class NewBotHJ extends LinearOpMode {
     public double startY;
     public double startHeading;
 
-    private boolean redAllianceBlueTape = true;
+    private boolean redAllianceBlueTape = false;
     private boolean redAllianceRedTape = false;
     private boolean blueAllianceBlueTape = false;
     private boolean blueAllianceRedTape = true;
