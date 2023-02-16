@@ -13,7 +13,7 @@ public class Teleop1_5 extends LinearOpMode {
     private Controller controller;
     private FieldCenterAuto1_5 fieldCenterAuto;
     private ConeTransporter1_5 coneTransporter;
-    private TestingOdo testingOdo;
+    //private TestingOdo testingOdo;
     //private TestingMotors testingMotors;
     public static Encoder leftEncoder, rightEncoder, frontEncoder;
     // Check if B is pressed
@@ -29,7 +29,7 @@ public class Teleop1_5 extends LinearOpMode {
             controller = new Controller(gamepad1, gamepad2);
             fieldCenterAuto = new FieldCenterAuto1_5(telemetry, hardwareMap);
             coneTransporter = new ConeTransporter1_5(telemetry, hardwareMap);
-            testingOdo = new TestingOdo(telemetry, hardwareMap);
+            //testingOdo = new TestingOdo(telemetry, hardwareMap);
             //testingMotors = new TestingMotors(telemetry, hardwareMap);
 
         } catch (Exception exception) {
@@ -189,7 +189,7 @@ public class Teleop1_5 extends LinearOpMode {
                 telemetry.addData("Linear Slides Pos.", coneTransporter.linearSlides.getCurrentPosition());
                 telemetry.addData("Linear Slides Pos. Current var ", coneTransporter.LINEAR_SLIDES_CURRENT);
                 //telemetry.addData("stackLevel", coneTransporter.telemetryLevel.get(coneTransporter.telemetryListIndex));
-                testingOdo.EncoderTelemetry();
+                //testingOdo.EncoderTelemetry();
                 //testingMotors.resetEncoder();
                 //testingMotors.EncoderTelemetry();
 

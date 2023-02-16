@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.AutonomousFolder;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
+
 public class IMUHeading {
     public static double imuAngle;
 /*

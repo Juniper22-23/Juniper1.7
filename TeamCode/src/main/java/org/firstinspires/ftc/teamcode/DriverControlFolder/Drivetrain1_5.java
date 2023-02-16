@@ -45,7 +45,6 @@ public abstract class Drivetrain1_5 extends Mechanism {
     }*/
 
     public double readFromIMU() {
-        IMUHeading.imuAngle = -imu.getAngularOrientation().firstAngle;
         return IMUHeading.imuAngle;
     }
 

@@ -23,11 +23,15 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.ImuOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceRunner;
@@ -95,14 +99,19 @@ public class SampleMecanumDrive extends MecanumDrive {
 
         // TODO: adjust the names of the following hardware devices to match your configuration
         imu = hardwareMap.get(IMU.class, "imu");
-        IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
-                DriveConstants.LOGO_FACING_DIR, DriveConstants.USB_FACING_DIR));
+        IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(new Orientation(AxesReference.INTRINSIC,
+                AxesOrder.ZYX,
+                AngleUnit.DEGREES,
+                270,
+                0,
+                24.446952F,
+                0)));
         imu.initialize(parameters);
 
-        leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
-        leftRear = hardwareMap.get(DcMotorEx.class, "leftRear");
-        rightRear = hardwareMap.get(DcMotorEx.class, "rightRear");
-        rightFront = hardwareMap.get(DcMotorEx.class, "rightFront");
+        leftFront = hardwareMap.get(DcMotorEx.class, "leftFrontMotor");
+        leftRear = hardwareMap.get(DcMotorEx.class, "leftBackMotor");
+        rightRear = hardwareMap.get(DcMotorEx.class, "rightBackMotor");
+        rightFront = hardwareMap.get(DcMotorEx.class, "rightFrontMotor");
 
         motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
 

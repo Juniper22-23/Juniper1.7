@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+//potao
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.DriverControlFolder.ConeTransporter1_5;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
@@ -99,11 +99,9 @@ public class NewBotLJ extends LinearOpMode {
 
         telemetry.setMsTransmissionInterval(50);
 
-        */
-/*
          * The INIT-loop:
          * This REPLACES waitForStart!
-         *//*
+
 
         while (!isStarted() && !isStopRequested()) {
             ArrayList<AprilTagDetection> currentDetections = detection.getLatestDetections();
@@ -161,15 +159,12 @@ public class NewBotLJ extends LinearOpMode {
 
         }
 
-        */
-/*
          * The START command just came in: now work off the latest snapshot acquired
          * during the init loop.
-         *//*
 
 
-        */
-/* Update the telemetry *//*
+
+ Update the telemetry
 
         if (tagOfInterest != null) {
             telemetry.addLine("Tag snapshot:\n");
@@ -180,8 +175,7 @@ public class NewBotLJ extends LinearOpMode {
             telemetry.update();
         }
 
-        */
-/* Start Loop *//*
+ Start Loop
 
 
         double numericalTag = 0;
@@ -352,12 +346,11 @@ public class NewBotLJ extends LinearOpMode {
 
         }
 
-        */
-/*while (opModeIsActive()) {
+while (opModeIsActive()) {
             IMUHeading.imuAngle = readFromIMU();
             telemetry.addData("IMUHeading.imuAngle: ", IMUHeading.imuAngle);
             telemetry.update();
-        }*//*
+        }
 
     }
 
@@ -387,4 +380,5 @@ public class NewBotLJ extends LinearOpMode {
     public double readFromIMU() {
         return -imu.getAngularOrientation().firstAngle;
     }
-}*/
+}
+*/
