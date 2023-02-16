@@ -160,6 +160,7 @@ public class Teleop1_5 extends LinearOpMode {
                     } else {
                         coneTransporter.moveDown();
                     }
+//                    coneTransporter.setLights();
                     stackState = true;
                 } else if (controller.rightTrigger) {
                     if (!stackState && coneTransporter.arrayListIndex <= 7 && coneTransporter.arrayListIndex > 0) {
@@ -167,6 +168,7 @@ public class Teleop1_5 extends LinearOpMode {
                     } else {
                         coneTransporter.moveUp();
                     }
+//                    coneTransporter.setLights();
                     stackState = true;
                 }
 

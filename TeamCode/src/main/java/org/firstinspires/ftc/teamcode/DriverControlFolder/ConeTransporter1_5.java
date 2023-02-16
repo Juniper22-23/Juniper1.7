@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigu
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Mechanism;
+import org.firstinspires.ftc.teamcode.Mechanisms.LightsMechanism;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class ConeTransporter1_5 extends Mechanism {
 
     //    public Map<LinearSlidesLevels, Double> linearSlidesLevels;
     public double V15 = 0;
+    public LightsMechanism lightsMechanism = new LightsMechanism(telemetry, hardwareMap);
 
     // Tele-Op
     public double LINEAR_SLIDES_LOW = 367.5;// 13.5 inches converted to mm(low junction)
@@ -77,6 +79,20 @@ public class ConeTransporter1_5 extends Mechanism {
 //        limitSwitch = this.hardwareMap.get(DigitalChannel.class, "limit switch");
 //        touchSensor = this.hardwareMap.get(TouchSensor.class, "touchSensor");
     }
+
+//    public void setLights(){
+//        if(linearSlides.getTargetPosition() == AUTO_LINEAR_SLIDES_15){
+//            lightsMechanism.runLights("magenta");
+//        }else if(linearSlides.getTargetPosition() == AUTO_LINEAR_SLIDES_14){
+//            lightsMechanism.runLights("red");
+//        }else if(linearSlides.getTargetPosition() == AUTO_LINEAR_SLIDES_13){
+//            lightsMechanism.runLights("green");
+//        }else if(linearSlides.getTargetPosition() == AUTO_LINEAR_SLIDES_12){
+//            lightsMechanism.runLights("blue");
+//        }else{
+//            lightsMechanism.runLights("clear");
+//        }
+//    }
     public void setArrayList() {
         stackLevel.add(AUTO_LINEAR_SLIDES_15);
         stackLevel.add(AUTO_LINEAR_SLIDES_15_IN_CONE);
