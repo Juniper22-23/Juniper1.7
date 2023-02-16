@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.DriverControlFolder;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Mechanism;
@@ -27,11 +28,11 @@ public class ConeTransporter1_5 extends Mechanism {
     public double V15 = 0;
 
     // Tele-Op
-    public double LINEAR_SLIDES_LOW = 367.5 - V15;// 13.5 inches converted to mm(low junction)
-    public double LINEAR_SLIDES_MEDIUM = 627.5 - V15;// 23.5 inches converted to mm(medium junction)
-    public double LINEAR_SLIDES_HIGH = 857.5 - V15;// 33.5 inches converted to mm(high junction) 2349
-    public double LINEAR_SLIDES_NORM = 100 - V15;
-    public double LINEAR_SLIDES_IN_CONE = 0 - V15;
+    public double LINEAR_SLIDES_LOW = 367.5;// 13.5 inches converted to mm(low junction)
+    public double LINEAR_SLIDES_MEDIUM = 627.5;// 23.5 inches converted to mm(medium junction)
+    public double LINEAR_SLIDES_HIGH = 862.5;// 33.5 inches converted to mm(high junction) 2349
+    public double LINEAR_SLIDES_NORM = 100;
+    public double LINEAR_SLIDES_IN_CONE = 0;
     public double LINEAR_SLIDES_CURRENT = LINEAR_SLIDES_NORM;
     public double ticks;
     //Autonomous
@@ -61,7 +62,7 @@ public class ConeTransporter1_5 extends Mechanism {
     public ArrayList<Double> stackLevel = new ArrayList<Double>();
     public ArrayList<String> telemetryLevel = new ArrayList<String>();
     public int arrayListIndex = -1;
-    public int telemetryListIndex = -1;
+    public String stackTelemetry;
 
     //LIMIT SWITCH_________________________________________________________________________________
 //    public DigitalChannel limitSwitch;
@@ -72,6 +73,7 @@ public class ConeTransporter1_5 extends Mechanism {
         linearSlides = this.hardwareMap.get(DcMotor.class, "linearSlides");
         linearSlides.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         gripper = this.hardwareMap.get(Servo.class, "gripper");
+
 //        limitSwitch = this.hardwareMap.get(DigitalChannel.class, "limit switch");
 //        touchSensor = this.hardwareMap.get(TouchSensor.class, "touchSensor");
     }
@@ -140,50 +142,37 @@ public class ConeTransporter1_5 extends Mechanism {
             linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
             linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             linearSlides.setPower(linearSlidesSpeed);
-        } else if (riseLevel == 12) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_12;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
-        } else if (riseLevel == 13) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_13;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
-        } else if (riseLevel == 14) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_14;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
-        } else if (riseLevel == 15) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_15;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
         }
 
     }
 
     public void moveDown() {
-        if (arrayListIndex <= stackLevel.size()) {
+        if (arrayListIndex <= 7) {
             arrayListIndex++;
-            telemetryListIndex++;
             setHeight(arrayListIndex);
         }
     }
 
 
     public void moveUp() {
-        if (arrayListIndex >= 0) {
+        if (arrayListIndex > 0) {
             if (arrayListIndex % 2 == 0) {
                 arrayListIndex = Math.max(arrayListIndex - 2, 0);
-                telemetryListIndex = Math.max(telemetryListIndex - 2, 0);
             } else {
-                telemetryListIndex -= 1;
                 arrayListIndex-=1;
             }
             setHeight(arrayListIndex);
         }
+    }
+    public void reset(){
+        if (arrayListIndex < 9) {
+            if (!(arrayListIndex % 2 == 0)) {
+                arrayListIndex+=1;
+            }
+        }
+    }
+    public void stackTelemetry(){
+        stackTelemetry = telemetryLevel.get(arrayListIndex);
     }
     public void setHeight(int index) {
         double linearSlides_MM = stackLevel.get(index);
@@ -200,31 +189,6 @@ public class ConeTransporter1_5 extends Mechanism {
         gripperPosition = position;
     }
 
-    public void setPosLevel(int level){ posLevel = level; }
-    public void down(){ inCone(posLevel); }
-    public void inCone(int pos) {
-        if (pos == 12) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_12_IN_CONE;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
-        } else if (pos == 13) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_13_IN_CONE;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
-        } else if (pos == 14) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_14_IN_CONE;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
-        } else if (pos == 15) {
-            LINEAR_SLIDES_CURRENT = AUTO_LINEAR_SLIDES_15_IN_CONE;
-            linearSlides.setTargetPosition(equate(LINEAR_SLIDES_CURRENT));
-            linearSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            linearSlides.setPower(linearSlidesSpeed);
-        }
-    }
 
     //    public void limitSwitch(){
 //        //true means pressed(Slides are at home), false means it isn't pressed(Slides are up)
